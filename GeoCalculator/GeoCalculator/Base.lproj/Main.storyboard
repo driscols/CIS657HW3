@@ -100,17 +100,70 @@
         <!--Settings-->
         <scene sceneID="CZ8-c7-oog">
             <objects>
-                <viewController id="Xjc-xe-2BD" sceneMemberID="viewController">
+                <viewController id="Xjc-xe-2BD" customClass="SettingsViewController" customModule="GeoCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pyc-Bg-pxr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eFV-BI-R1k">
+                                <rect key="frame" x="0.0" y="632" width="414" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RRg-Oo-Edd">
+                                <rect key="frame" x="28" y="114" width="72" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bearing:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LnL-RK-sJZ">
+                                <rect key="frame" x="28" y="143" width="64" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kilometers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qo7-i3-hbH">
+                                <rect key="frame" x="294" y="114" width="82" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES"/>
+                                </accessibility>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Degrees" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOv-VH-WDH">
+                                <rect key="frame" x="294" y="143" width="82" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES"/>
+                                </accessibility>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2GB-4P-w2t"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="aTb-ah-tE7">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="uOQ-Ks-8nS"/>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="jhN-Cu-ujC"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="uOQ-Ks-8nS">
+                            <connections>
+                                <action selector="btnCancel:" destination="Xjc-xe-2BD" id="vqW-3K-WXT"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="jhN-Cu-ujC">
+                            <connections>
+                                <action selector="saveOps:" destination="Xjc-xe-2BD" id="DHX-8f-biF"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="bearing" destination="aOv-VH-WDH" id="LlY-vD-w6d"/>
+                        <outlet property="dist" destination="Qo7-i3-hbH" id="hsB-sa-RKs"/>
+                        <outlet property="settingsPicker" destination="eFV-BI-R1k" id="x6X-XS-Ygv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Nh-J2-Eyc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

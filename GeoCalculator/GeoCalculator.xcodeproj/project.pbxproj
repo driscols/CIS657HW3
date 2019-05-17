@@ -16,6 +16,7 @@
 		668B8A2B228B78B700A1755B /* GeoCalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B8A2A228B78B700A1755B /* GeoCalculatorUITests.swift */; };
 		668B8A39228B79A800A1755B /* DecimalMinusTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B8A38228B79A800A1755B /* DecimalMinusTextField.swift */; };
 		668B8A3C228B8E9000A1755B /* CLLocationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B8A3A228B80FF00A1755B /* CLLocationExtensions.swift */; };
+		8EA40045228E1861002FF33A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA40044228E1861002FF33A /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		668B8A2C228B78B700A1755B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		668B8A38228B79A800A1755B /* DecimalMinusTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalMinusTextField.swift; sourceTree = "<group>"; };
 		668B8A3A228B80FF00A1755B /* CLLocationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationExtensions.swift; sourceTree = "<group>"; };
+		8EA40044228E1861002FF33A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				668B8A0C228B78B600A1755B /* ViewController.swift */,
 				668B8A38228B79A800A1755B /* DecimalMinusTextField.swift */,
 				668B8A0E228B78B600A1755B /* Main.storyboard */,
+				8EA40044228E1861002FF33A /* SettingsViewController.swift */,
 				668B8A11228B78B700A1755B /* Assets.xcassets */,
 				668B8A13228B78B700A1755B /* LaunchScreen.storyboard */,
 				668B8A16228B78B700A1755B /* Info.plist */,
@@ -264,6 +267,7 @@
 				668B8A39228B79A800A1755B /* DecimalMinusTextField.swift in Sources */,
 				668B8A3C228B8E9000A1755B /* CLLocationExtensions.swift in Sources */,
 				668B8A0D228B78B600A1755B /* ViewController.swift in Sources */,
+				8EA40045228E1861002FF33A /* SettingsViewController.swift in Sources */,
 				668B8A0B228B78B600A1755B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
