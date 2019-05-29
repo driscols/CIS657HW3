@@ -8,9 +8,7 @@
 import UIKit
 import CoreLocation
 
-class ViewController: GeoCalcViewController, SettingsViewControllerDelegate {
-
-    
+class ViewController: GeoCalcViewController, SettingsViewControllerDelegate, HistoryTableViewControllerDelegate {
     
     @IBOutlet weak var LatP1: DecimalMinusTextField!
     @IBOutlet weak var LatP2: DecimalMinusTextField!
@@ -21,6 +19,10 @@ class ViewController: GeoCalcViewController, SettingsViewControllerDelegate {
     @IBOutlet weak var BearingLabel: UILabel!
     var distUnits:String = "Kilometers"
     var bearUnits:String = "Degrees"
+    
+    var entries : [LocationLookup] = [
+        LocationLookup(origLat: 90.0, origLng: 0.0, destLat: -90.0, destLng: 0.0, timestamp: Date.distantPast),
+        LocationLookup(origLat: -90.0, origLng: 0.0, destLat: 90.0, destLng: 0.0, timestamp: Date.distantFuture)]
     
     
     
@@ -74,14 +76,36 @@ class ViewController: GeoCalcViewController, SettingsViewControllerDelegate {
              BearingLabel.text = "Bearing: \(bearing) degrees"
         }
         
+        entries.append(LocationLookup(origLat: fLatP1!, origLng: fLongP1!, destLat: fLatP1!,
+                                      destLng: fLongP2!, timestamp: Date()))
     }
     
     override func prepare(for segue:UIStoryboardSegue, sender: Any?){
-        if let nc = segue.destination as? UINavigationController{
-            if let dest = nc.children[0] as? SettingsViewController{
-                dest.delegate = self
+        if let nc = segue.destination as? SettingsViewController{
+            nc.delegate = self
+            
+        }
+        
+        if (segue.identifier == "historySegue"){
+            if let hc = segue.destination as? HistoryTableViewController{
+                hc.entries = self.entries
+                hc.historyDelegate = self
             }
         }
     }
+    
+    func selectEntry(entry: LocationLookup) {
+        LatP1.text = String(entry.origLat)
+        LatP2.text = String(entry.destLat)
+        LongP1.text = String(entry.origLng)
+        LongP2.text = String(entry.destLng)
+        
+        settingsChanged(distanceUnits: distUnits, bearingUnits: bearUnits)
+    }
+    
+    
+    
 }
+
+
 

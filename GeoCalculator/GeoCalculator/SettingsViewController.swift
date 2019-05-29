@@ -32,7 +32,7 @@ class SettingsViewController: UIViewController {
         view.addGestureRecognizer(tapAnywhere)
     }
     @IBAction func btnCancel(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     @objc func tapDist(sender:UITapGestureRecognizer) {
@@ -55,19 +55,15 @@ class SettingsViewController: UIViewController {
         settingsPicker.isHidden = true
     }
     @IBAction func saveOps(_ sender: Any) {
-            if let d = self.delegate{
+        if let d = self.delegate{
             d.settingsChanged(distanceUnits: dist.text!, bearingUnits: bearing.text!)
         }
-        dismiss(animated: true, completion: nil)
+        
+        _ = self.navigationController?.popViewController(animated: true)
     
     }
     
-            
-        
-    
-    
-    
-    
+
     /*
     // MARK: - Navigation
 
