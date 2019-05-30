@@ -2,7 +2,7 @@
 //  HistoryTableViewCell.swift
 //  GeoCalculator
 //
-//  Created by Sean J. Driscoll on 5/28/19.
+//  Created by Sean J. Driscoll & Sanil Apte on 5/28/19.
 //
 
 import UIKit

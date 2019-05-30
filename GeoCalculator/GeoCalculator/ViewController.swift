@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  GeoCalculator
 //
-//  Created by Sean J. Driscoll on 5/14/19.
+//  Created by Sean J. Driscoll & Sanil Apte on 5/14/19.
 //
 
 import UIKit
@@ -46,38 +46,43 @@ class ViewController: GeoCalcViewController, SettingsViewControllerDelegate, His
     func settingsChanged(distanceUnits: String, bearingUnits: String){
         distUnits = distanceUnits
         bearUnits = bearingUnits
-        let fLatP1 :Double? = Double(LatP1.text!)
-        let fLatP2 :Double? = Double(LatP2.text!)
-        let fLongP1 :Double? = Double(LongP1.text!)
-        let fLongP2 : Double? = Double(LongP2.text!)
         
-        let p1 = CLLocation(latitude: fLatP1!, longitude: fLongP1!)
-        let p2 = CLLocation(latitude: fLatP2!, longitude: fLongP2!)
-        
-        let distance = round((p1.distance(from: p2)/1000) * 100) / 100
-        
-        let bearing = round(p1.bearingToPoint(point: p2) * 100) / 100
-        
-        if(distanceUnits != "Kilometers"){
-            let mi = round(distance / 62.1371) / 100
-            DistanceLabel.text = "Distance: \(mi) miles"
-        
-        }
-        else{
-            DistanceLabel.text = "Distance: \(distance) km"
-        }
-        
-        if(bearingUnits != "Degrees"){
-            let mils = round(bearing * 1777.77777778) / 100
-             BearingLabel.text = "Bearing: \(mils) mils"
+        if (LatP1.text == "" || LatP2.text == "" || LongP1.text == "" || LongP2.text == ""){
             
+        }else{
+            let fLatP1 :Double? = Double(LatP1.text!)
+            let fLatP2 :Double? = Double(LatP2.text!)
+            let fLongP1 :Double? = Double(LongP1.text!)
+            let fLongP2 : Double? = Double(LongP2.text!)
+            
+            let p1 = CLLocation(latitude: fLatP1!, longitude: fLongP1!)
+            let p2 = CLLocation(latitude: fLatP2!, longitude: fLongP2!)
+            
+            let distance = round((p1.distance(from: p2)/1000) * 100) / 100
+            
+            let bearing = round(p1.bearingToPoint(point: p2) * 100) / 100
+            
+            if(distanceUnits != "Kilometers"){
+                let mi = round(distance / 62.1371) / 100
+                DistanceLabel.text = "Distance: \(mi) miles"
+            
+            }
+            else{
+                DistanceLabel.text = "Distance: \(distance) km"
+            }
+            
+            if(bearingUnits != "Degrees"){
+                let mils = round(bearing * 1777.77777778) / 100
+                 BearingLabel.text = "Bearing: \(mils) mils"
+                
+            }
+            else{
+                 BearingLabel.text = "Bearing: \(bearing) degrees"
+            }
+            
+            entries.append(LocationLookup(origLat: fLatP1!, origLng: fLongP1!, destLat: fLatP1!,
+                                          destLng: fLongP2!, timestamp: Date()))
         }
-        else{
-             BearingLabel.text = "Bearing: \(bearing) degrees"
-        }
-        
-        entries.append(LocationLookup(origLat: fLatP1!, origLng: fLongP1!, destLat: fLatP1!,
-                                      destLng: fLongP2!, timestamp: Date()))
     }
     
     override func prepare(for segue:UIStoryboardSegue, sender: Any?){

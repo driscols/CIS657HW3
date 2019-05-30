@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  GeoCalculator
 //
-//  Created by Sean J. Driscoll on 5/14/19.
+//  Created by Sean J. Driscoll & Sanil Apte on 5/14/19.
 //
 
 import UIKit

@@ -2,7 +2,7 @@
 //  SettingsViewController.swift
 //  GeoCalculator
 //
-//  Created by Sanil A. Apte on 5/16/19.
+//  Created by Sanil A. Apte & Sean Driscoll on 5/16/19.
 //
 
 import UIKit

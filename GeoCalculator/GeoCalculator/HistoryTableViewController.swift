@@ -2,7 +2,7 @@
 //  HistoryTableViewController.swift
 //  GeoCalculator
 //
-//  Created by Sean J. Driscoll on 5/28/19.
+//  Created by Sean J. Driscoll & Sanil Apte on 5/28/19.
 //
 
 import UIKit
@@ -61,16 +61,44 @@ class HistoryTableViewController: UITableViewController {
     }
 
  
+    // MARK: - UITableViewDelegate
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) ->
+        String? {
+            return self.tableViewData?[section].sectionHeader
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) ->
+        CGFloat {
+            return 200.0
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection
+        section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = FOREGROUND_COLOR
+        header.contentView.backgroundColor = BACKGROUND_COLOR
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView,
+                            forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = FOREGROUND_COLOR
+        header.contentView.backgroundColor = BACKGROUND_COLOR
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // use the historyDelegate to report back entry selected to the calculator scene
         if let del = self.historyDelegate {
-            let ll = entries[indexPath.row]
-            del.selectEntry(entry: ll)
+            if let ll = self.tableViewData?[indexPath.section].entries[indexPath.row] {
+                del.selectEntry(entry: ll)
+            }
         }
         
         // this pops to the calculator
         _ = self.navigationController?.popViewController(animated: true)
     }
+
     
     var tableViewData: [(sectionHeader: String, entries: [LocationLookup])]? {
         didSet {
